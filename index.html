@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投资分析平台 · 总入口</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#1a1d26;--mut:#6b7280;--line:#e5e7eb;--blue:#378add;--red:#e24b4a;--green:#1d9e75;--amber:#ba7517;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding:30px;}
+.wrap{max-width:900px;margin:0 auto;}
+h1{font-size:24px;font-weight:600;margin-bottom:6px;text-align:center;}
+.sub{color:var(--mut);font-size:14px;margin-bottom:28px;text-align:center;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;cursor:pointer;transition:all .15s;display:flex;flex-direction:column;}
+.card:hover{border-color:var(--blue);box-shadow:0 2px 12px rgba(55,138,221,.12);transform:translateY(-2px);}
+.card .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;margin-bottom:12px;}
+.card h2{font-size:16px;font-weight:600;margin-bottom:6px;}
+.card p{font-size:12px;color:var(--mut);flex:1;}
+.card .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-top:10px;align-self:flex-start;}
+.ic-blue{background:#e8f1fb;color:#185fa5;} .ic-red{background:#fdecec;color:#a32d2d;} .ic-green{background:#e6f6ef;color:#0f6e56;} .ic-amber{background:#fef3e8;color:#854f0b;}
+.tag-blue{background:#e8f1fb;color:#185fa5;} .tag-red{background:#fdecec;color:#a32d2d;} .tag-green{background:#e6f6ef;color:#0f6e56;} .tag-amber{background:#fef3e8;color:#854f0b;}
+.note{color:var(--mut);font-size:12px;margin-top:24px;text-align:center;}
+a{text-decoration:none;color:inherit;display:block;}
+
+/* 工具视图（内嵌） */
+.view{display:none;max-width:1400px;margin:0 auto;}
+.view.active{display:block;}
+.view-bar{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.btn-back{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer;font-size:13px;color:var(--ink);transition:all .15s;}
+.btn-back:hover{border-color:var(--blue);color:var(--blue);}
+.btn-new{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer;font-size:13px;color:var(--mut);transition:all .15s;margin-left:auto;}
+.btn-new:hover{border-color:var(--amber);color:var(--amber);}
+.view-title{font-size:16px;font-weight:600;}
+.frame{width:100%;height:calc(100vh - 150px);min-height:600px;border:1px solid var(--line);border-radius:12px;background:#fff;}
+</style>
+</head>
+<body>
+<!-- 入口视图 -->
+<div class="wrap" id="home">
+  <h1>投资分析平台</h1>
+  <div class="sub">报表分析专家 · 三大核心工具统一入口</div>
+  <div class="cards">
+    <div class="card" onclick="openTool('虚拟投资账户+沪深300财务分析.html')">
+      <div class="icon ic-red">账</div>
+      <h2>虚拟投资账户 + 沪深300分析</h2>
+      <p>设定虚拟资金模拟炒股、实时盈亏；沪深300全量财务数据多维分析（雷达、行业排行、分红、现金流、趋势）。</p>
+      <span class="tag tag-red">模拟炒股 · 财务全景</span>
+    </div>
+    <div class="card" onclick="openTool('模拟投资决策与偏好分析.html')">
+      <div class="icon ic-green">决</div>
+      <h2>投资决策记录与偏好分析</h2>
+      <p>录入每次买卖决策，形成历史档案；动态迭代用户画像（风险/行业/持仓周期/仓位/决策偏差），输出决策评价。</p>
+      <span class="tag tag-green">决策复盘 · 用户画像</span>
+    </div>
+    <div class="card" onclick="openTool('虚拟投资回测-组合vs基准对比.html')">
+      <div class="icon ic-blue">回</div>
+      <h2>组合回测 · 基准对比</h2>
+      <p>均衡组合 vs 激进组合 vs 沪深300基准，净值走势、收益风险象限、回撤对比，直观展示分散配置价值。</p>
+      <span class="tag tag-blue">回测 · 归因</span>
+    </div>
+    <div class="card" onclick="openTool('虚拟投资案例实验-一周复盘.html')">
+      <div class="icon ic-amber">案</div>
+      <h2>案例实验 · 一周复盘</h2>
+      <p>100万建仓案例，一周盈亏计算、个股对比、投资倾向画像与损益归因总结。</p>
+      <span class="tag tag-amber">案例 · 复盘</span>
+    </div>
+  </div>
+  <div class="note">提示：虚拟投资账户需通过「双击启动.bat」启动本地服务才能联网拉取实时行情；其余工具双击即可离线打开。红涨绿跌（A股惯例）。<br>点击上方任一卡片，即可在本页内直接打开对应工具；也可点右上角「新窗口打开」。</div>
+</div>
+
+<!-- 工具视图 -->
+<div class="view" id="view">
+  <div class="view-bar">
+    <button class="btn-back" onclick="closeTool()">← 返回入口</button>
+    <span class="view-title" id="viewTitle"></span>
+    <button class="btn-new" onclick="openNew()">↗ 新窗口打开</button>
+  </div>
+  <iframe class="frame" id="frame" title="工具视图"></iframe>
+</div>
+
+<script>
+let currentTool = '';
+function openTool(name){
+  currentTool = name;
+  document.getElementById('home').style.display = 'none';
+  const view = document.getElementById('view');
+  view.classList.add('active');
+  document.getElementById('viewTitle').textContent = name.replace('.html','');
+  document.getElementById('frame').src = name;
+}
+function closeTool(){
+  document.getElementById('frame').src = 'about:blank';
+  document.getElementById('view').classList.remove('active');
+  document.getElementById('home').style.display = 'block';
+}
+function openNew(){
+  if(currentTool) window.open(currentTool, '_blank');
+}
+</script>
+</body>
+</html>
